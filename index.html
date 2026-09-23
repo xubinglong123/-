@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雾隐山庄谜案 · 在线剧本杀</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- 首页 -->
+  <section id="view-home" class="view active">
+    <div class="hero">
+      <div class="mist"></div>
+      <h1>雾隐山庄谜案</h1>
+      <p class="sub">云雾封山 · 一桩毒杀案 · 凶手就在席间</p>
+      <div class="mode-cards">
+        <div class="mode-card" id="btn-solo">
+          <div class="mode-icon">🔍</div>
+          <h3>单人探案</h3>
+          <p>一人也能玩。化身侦探，三章解锁线索，三道谜题自检推理。</p>
+        </div>
+        <div class="mode-card" id="btn-multi">
+          <div class="mode-icon">👥</div>
+          <h3>多人联机</h3>
+          <p>3-6人网络组队。创建房间，把房间码发给好友即可加入对局。</p>
+        </div>
+      </div>
+      <p class="note">原创剧本 · 每个关键结论至少两条独立线索支撑 · 支持手机浏览器</p>
+    </div>
+  </section>
+
+  <!-- 多人：入口 -->
+  <section id="view-multi-entry" class="view">
+    <button class="back" data-back="home">← 返回</button>
+    <h2>多人联机</h2>
+    <div class="panel">
+      <label>你的昵称</label>
+      <input id="in-name" maxlength="10" placeholder="例如：阿龙">
+      <div class="row2">
+        <div class="col">
+          <h3>创建房间</h3>
+          <p>作为房主开局，获得 4 位房间码。</p>
+          <button class="primary" id="btn-create">创建房间</button>
+        </div>
+        <div class="col">
+          <h3>加入房间</h3>
+          <input id="in-code" maxlength="4" placeholder="房间码" style="text-transform:uppercase">
+          <button class="primary" id="btn-join">加入房间</button>
+        </div>
+      </div>
+      <p id="entry-err" class="err"></p>
+    </div>
+  </section>
+
+  <!-- 多人：大厅 -->
+  <section id="view-lobby" class="view">
+    <h2>房间大厅</h2>
+    <div class="panel center">
+      <p class="hint">把房间码发给好友，他们选择「加入房间」即可入局</p>
+      <div class="roomcode" id="lobby-code">----</div>
+      <button class="ghost small" id="btn-copy">复制房间码</button>
+      <div class="player-list" id="lobby-players"></div>
+      <p class="hint">3-6 人可开局 · 角色由系统随机分配</p>
+      <button class="primary" id="btn-start">开始游戏</button>
+      <button class="ghost" id="btn-leave">退出房间</button>
+    </div>
+  </section>
+
+  <!-- 多人：对局 -->
+  <section id="view-game" class="view">
+    <div class="game-head">
+      <span class="stage-badge" id="g-stage"></span>
+      <span class="roomcode-inline" id="g-code"></span>
+      <button class="ghost small" id="btn-voice">🔊 语音开</button>
+      <button class="ghost small" id="btn-quit">退出</button>
+    </div>
+    <div class="timerbar hidden" id="g-timer"></div>
+    <div class="tabs" id="g-tabs"></div>
+
+    <!-- 我的角色 -->
+    <div class="tabpane" id="pane-role">
+      <div class="panel" id="role-sheet"></div>
+    </div>
+
+    <!-- 线索 -->
+    <div class="tabpane" id="pane-clues">
+      <div id="clue-public"></div>
+      <div class="panel" id="clue-draw"></div>
+      <div id="clue-mine"></div>
+    </div>
+
+    <!-- 讨论室 -->
+    <div class="tabpane" id="pane-chat">
+      <div class="chatbox">
+        <div class="chat-list" id="chat-list"></div>
+        <div class="chat-input">
+          <input id="chat-text" maxlength="300" placeholder="发言、质疑、串线索…（回车发送）">
+          <button class="primary" id="chat-send">发送</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 投票 -->
+    <div class="tabpane" id="pane-vote">
+      <div class="panel" id="vote-panel"></div>
+    </div>
+
+    <!-- 揭晓 -->
+    <div class="tabpane" id="pane-reveal">
+      <div id="reveal-box"></div>
+    </div>
+
+    <div class="hostbar" id="hostbar"></div>
+  </section>
+
+  <!-- 单人模式 -->
+  <section id="view-solo" class="view">
+    <button class="back" data-back="home">← 返回首页</button>
+    <h2 id="solo-title">单人探案</h2>
+    <div id="solo-body"></div>
+  </section>
+
+</div>
+<script src="/app.js"></script>
+</body>
+</html>
